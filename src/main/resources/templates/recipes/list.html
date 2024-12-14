@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja" 
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout/layout}"
+>
+<head>
+    <title>レシピ一覧</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold underline">レシピ一覧ページです</h1>
+            <p>レシピ一覧をここに表示します</p>
+        </div>
+        <div>
+            <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>name</th>
+                        <th>main_ingredient</th>
+                        <th>other_ingredients</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="recipe:${recipeList}" th:object="${recipe}">
+                        <td><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{id}"></a></td>
+                        <td><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{name}"></a></td>
+                        <td th:text="*{mainIngredient}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="ingredient:*{otherIngredients}" th:text="${ingredient}"></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a class="underline" th:href="@{/recipe/registerForm}">新規登録</a>
+        </div>
+    </section>
+</body>
+</html>

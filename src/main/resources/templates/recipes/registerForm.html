@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" 
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout/layout}"
+>
+<head>
+    <title>レシピ登録フォーム</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold underline">レシピ登録ページです</h1>
+            <p>以下にレシピ情報を入力してください</p>
+        </div>
+        <form th:action="@{/recipe}" method="post" class="w-10/12 mx-auto md:max-w-md">
+            <div class="mb-8">
+                <label for="name" class="block text-sm">レシピ名</label>
+                <input type="text" id="name" name="name" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="カレー" required>
+            </div>
+            <div class="mb-8">
+                <label for="mainIngredient" class="block text-sm">メイン食材</label>
+                <input type="text" id="mainIngredient" name="mainIngredient" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="牛肉" required>
+            </div>
+            <div class="mb-8">
+                <label for="otherIngredients" class="block text-sm">サブ食材</label>
+                <input type="text" id="otherIngredients" name="otherIngredients" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="玉ねぎ、にんじん、じゃがいも、カレールー(カレー粉)" required>
+            </div>
+            <div class="mb-8">
+                <label for="url" class="block text-sm">レシピURL</label>
+                <input type="text" id="url" name="url" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="https://example.com"  required>
+            </div>
+            <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">登録</button>
+    </section>
+</body>
+</html>
