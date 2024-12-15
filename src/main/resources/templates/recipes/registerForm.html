@@ -12,24 +12,54 @@
             <h1 class="text-3xl font-bold underline">レシピ登録ページです</h1>
             <p>以下にレシピ情報を入力してください</p>
         </div>
-        <form th:action="@{/recipe}" method="post" class="w-10/12 mx-auto md:max-w-md">
+        <form th:action="@{/recipe}" method="post" th:object="${recipeForm}" class="w-10/12 mx-auto md:max-w-md">
             <div class="mb-8">
                 <label for="name" class="block text-sm">レシピ名</label>
-                <input type="text" id="name" name="name" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="カレー" required>
+                <input
+                    type="text"
+                    th:field="*{name}"
+                    class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                    th:errorclass="'border-red-500 border-b-2'"
+                    placeholder="カレー"
+                >
+                <span th:errors="*{name}" class="mt-1 text-sm text-red-500"></span>
             </div>
             <div class="mb-8">
                 <label for="mainIngredient" class="block text-sm">メイン食材</label>
-                <input type="text" id="mainIngredient" name="mainIngredient" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="牛肉" required>
+                <input
+                    type="text"
+                    th:field="*{mainIngredient}"
+                    class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                    placeholder="牛肉"
+                    required
+                >
+                <span th:errors="*{mainIngredient}"></span>
             </div>
             <div class="mb-8">
                 <label for="otherIngredients" class="block text-sm">サブ食材</label>
-                <input type="text" id="otherIngredients" name="otherIngredients" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="玉ねぎ、にんじん、じゃがいも、カレールー(カレー粉)" required>
+                <input
+                    type="text" th:field="*{otherIngredients}"
+                    class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                    placeholder="玉ねぎ、にんじん、じゃがいも、カレールー(カレー粉)"
+                >
+                <span th:errors="*{otherIngredients}"></span>
             </div>
             <div class="mb-8">
                 <label for="url" class="block text-sm">レシピURL</label>
-                <input type="text" id="url" name="url" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="https://example.com"  required>
+                <input
+                    type="text"
+                    th:field="*{url}"
+                    class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                    placeholder="https://example.com"
+                    required
+                >
+                <span th:errors="*{url}"></span>
             </div>
-            <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">登録</button>
+            <div class="flex gap-2">
+                <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">Register</button>
+                <a th:href="@{/recipe/list}" class="bg-gray-500 hover:bg-grey-700 text-white font-bold py-2 px-4 rounded-full">Back</a>
+            </div>
+        </form>
     </section>
 </body>
 </html>

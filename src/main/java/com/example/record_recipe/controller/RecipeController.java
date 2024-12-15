@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,14 +43,14 @@ public class RecipeController {
     }
 
     @GetMapping("/registerForm")
-    public String showRecipeRegisterForm(){
+    public String showRecipeRegisterForm(@ModelAttribute RecipeForm form){
         return "recipes/registerForm";
     }
 
     @PostMapping
     public String registerRecipe(@Validated RecipeForm form, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "recipes/registerForm";
+            return showRecipeRegisterForm(form);
         }
         service.register(form.toDTO());
         return "redirect:/recipe/list";

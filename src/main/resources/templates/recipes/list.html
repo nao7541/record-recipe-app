@@ -8,36 +8,45 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <div class="text-center">
+        <div class="text-center mb-8">
             <h1 class="text-3xl font-bold underline">レシピ一覧ページです</h1>
-            <p>レシピ一覧をここに表示します</p>
+            <p>今日は何を作る？</p>
         </div>
-        <div>
-            <table class="w-full text-left table-auto min-w-max">
-                <thead>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
+            <table class="w-full text-left text-sm rtl:text-right text-grey-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                     <tr>
-                        <th>ID</th>
-                        <th>name</th>
-                        <th>main_ingredient</th>
-                        <th>other_ingredients</th>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">name</th>
+                        <th scope="col" class="px-6 py-3">main_ingredient</th>
+                        <th scope="col" class="px-6 py-3">other_ingredients</th>
+                        <th scope="col" class="px-6 py-3">action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="recipe:${recipeList}" th:object="${recipe}">
-                        <td><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{id}"></a></td>
-                        <td><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{name}"></a></td>
-                        <td th:text="*{mainIngredient}"></td>
-                        <td>
+                    <tr
+                        th:each="recipe:${recipeList}"
+                        th:object="${recipe}"
+                        class="odd:bg-white even:bg-gray-50 border-b"
+                    >
+                        <td class="px-6 py-4"><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{id}"></a></td>
+                        <td class="px-6 py-4"><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{name}"></a></td>
+                        <td class="px-6 py-4" th:text="*{mainIngredient}"></td>
+                        <td class="px-6 py-4">
                             <ul>
                                 <li th:each="ingredient:*{otherIngredients}" th:text="${ingredient}"></li>
                             </ul>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a class="underline" th:href="@{/recipe/{id}/edit(id=*{id})}">編集</a>
+                            <a class="underline" th:href="@{/recipe/{id}/delete(id=*{id})}">削除</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="text-center">
-            <a class="underline" th:href="@{/recipe/registerForm}">新規登録</a>
+            <a class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full" th:href="@{/recipe/registerForm}">新規登録</a>
         </div>
     </section>
 </body>
