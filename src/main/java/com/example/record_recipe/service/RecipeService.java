@@ -34,9 +34,31 @@ public class RecipeService {
     }
 
     // レシピを登録するメソッド
+    @Transactional
     public void register(RecipeDTO recipe) {
         RecipeEntity entity = convertToEntity(recipe);
         repository.save(entity);
+    }
+
+    // レシピを更新するメソッド
+    @Transactional
+    public void update(RecipeDTO recipe) {
+        // 更新対象のレシピが存在しない場合は例外をスローする
+        RecipeEntity existingEntity = repository.findById(recipe.getId())
+            .orElseThrow(NotFoundException::new);
+
+        existingEntity.setName(recipe.getName());
+        existingEntity.setMainIngredient(recipe.getMainIngredient());
+        existingEntity.setOtherIngredients(recipe.getOtherIngredients());
+        existingEntity.setUrl(recipe.getUrl());
+
+        repository.save(existingEntity);
+    }
+
+    // レシピを削除するメソッド
+    @Transactional
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
     // エンティティをDTOに変換するメソッド

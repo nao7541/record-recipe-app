@@ -21,6 +21,14 @@
             </ul>
             <p th:text="*{url}"></p>
         </div>
+        <div>
+            <form
+                th:action="@{/recipe/{id}(id=*{id})}"
+                th:method="delete"
+                onclick="return confirm('レシピを削除しますか？');"
+            >
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Delete</button>
+        </div>
     </section>
 </body>
 </html>
