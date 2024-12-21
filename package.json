@@ -14,5 +14,8 @@
   "description": "",
   "devDependencies": {
     "tailwindcss": "^3.4.16"
+  },
+  "dependencies": {
+    "preline": "^2.6.0"
   }
 }

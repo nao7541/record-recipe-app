@@ -1,0 +1,29 @@
+<div th:fragment="sidebar">
+    <!-- サイドバー本体 -->
+    <div id="hs-offcanvas-example"
+        class="hs-overlay hidden fixed top-0 start-0 transition-all duration-300 transform -translate-x-full w-64 h-full z-[60] bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto hs-overlay-open:translate-x-0"
+        role="dialog"
+        tabindex="-1"
+        aria-label="Sidebar"
+        data-hs-overlay-backdrop="true">
+        <div class="px-6">
+            <a class="flex-none font-semibold text-xl text-black focus:outline-none focus:opacity-80" href="#" aria-label="Brand">RRA</a>
+        </div>
+        <!-- サイドバーの内容 -->
+        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap">
+            <ul class="space-y-1.5">
+                <li>
+                    <a th:href="@{/recipe/list}" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100">
+                        レシピ一覧
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/recipe/registerForm}" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100">
+                        新規登録
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="hs-overlay-backdrop fixed top-0 start-0 z-[59] hidden w-full h-full bg-gray-900/50" aria-hidden="true"></div>
+</div>
