@@ -632,10 +632,6 @@ video {
   inset: 0px;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
 .bottom-full {
   bottom: 100%;
 }
@@ -652,8 +648,8 @@ video {
   top: 100%;
 }
 
-.z-\[55\] {
-  z-index: 55;
+.z-\[59\] {
+  z-index: 59;
 }
 
 .z-\[60\] {
@@ -812,6 +808,10 @@ video {
   max-width: 100%;
 }
 
+.flex-none {
+  flex: none;
+}
+
 .shrink-0 {
   flex-shrink: 0;
 }
@@ -845,6 +845,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .flex-nowrap {
@@ -1039,8 +1043,8 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
 }
 
-.bg-gray-900\/70 {
-  background-color: rgb(17 24 39 / 0.7);
+.bg-gray-900\/50 {
+  background-color: rgb(17 24 39 / 0.5);
 }
 
 .bg-indigo-500 {
@@ -1173,6 +1177,11 @@ video {
   line-height: 1.25rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1200,6 +1209,11 @@ video {
 
 .lowercase {
   text-transform: lowercase;
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
 .text-blue-500 {
@@ -1312,22 +1326,12 @@ video {
   transition-duration: 150ms;
 }
 
-.transition-opacity {
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
 }
 
 .duration-500 {
   transition-duration: 500ms;
-}
-
-.\[--auto-close\:lg\] {
-  --auto-close: lg;
 }
 
 .odd\:bg-white:nth-child(odd) {
@@ -1394,6 +1398,10 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
 }
 
+.focus\:opacity-80:focus {
+  opacity: 0.8;
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1452,25 +1460,6 @@ video {
   }
 }
 
-@media (min-width: 1024px) {
-  .lg\:bottom-0 {
-    bottom: 0px;
-  }
-
-  .lg\:end-auto {
-    inset-inline-end: auto;
-  }
-
-  .lg\:block {
-    display: block;
-  }
-
-  .lg\:translate-x-0 {
-    --tw-translate-x: 0px;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-}
-
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right;
 }
@@ -1514,10 +1503,6 @@ video {
   .dark\:bg-neutral-900 {
     --tw-bg-opacity: 1;
     background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
-  }
-
-  .dark\:bg-neutral-900\/70 {
-    background-color: rgb(23 23 23 / 0.7);
   }
 
   .dark\:bg-opacity-80 {
