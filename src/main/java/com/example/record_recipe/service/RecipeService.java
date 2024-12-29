@@ -33,6 +33,14 @@ public class RecipeService {
         return convertToDTO(entity);
     }
 
+    // レシピ名でレシピを検索するメソッド
+    public List<RecipeDTO> findByName(String name) {
+        String searchName = "%" + name + "%";
+        return repository.findByName(searchName).stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     // レシピを登録するメソッド
     @Transactional
     public void register(RecipeDTO recipe) {

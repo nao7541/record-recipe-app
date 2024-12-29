@@ -18,11 +18,16 @@
             <h1 class="text-3xl font-bold underline">レシピ一覧ページです</h1>
             <p>今日は何を作る？</p>
         </div>
+        <div class="w-3/4 mx-auto mb-4 py-3">
+            <form th:action="@{/recipe/search}" method="get" class="flex items-center gap-4">
+                <input type="text" name="recipeName" placeholder="レシピ名を入力" class="w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button type="submit" class="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none focus:bg-indigo-700">Go</button>
+            </form>
+        </div>
         <div class="w-3/4 mx-auto relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
             <table class="w-full text-left text-sm rtl:text-right text-grey-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                     <tr>
-                        <th scope="col" class="px-6 py-3">ID</th>
                         <th scope="col" class="px-6 py-3">name</th>
                         <th scope="col" class="px-6 py-3">main_ingredient</th>
                         <th scope="col" class="px-6 py-3">other_ingredients</th>
@@ -35,7 +40,6 @@
                         th:object="${recipe}"
                         class="odd:bg-white even:bg-gray-50 border-b"
                     >
-                        <td class="px-6 py-4"><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{id}"></a></td>
                         <td class="px-6 py-4"><a class="underline" th:href="@{/recipe/{id}(id=*{id})}" th:text="*{name}"></a></td>
                         <td class="px-6 py-4" th:text="*{mainIngredient}"></td>
                         <td class="px-6 py-4">

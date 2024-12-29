@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.example.record_recipe.service.RecipeService;
 
 import com.example.record_recipe.form.RecipeForm;
@@ -93,5 +95,12 @@ public class RecipeController {
     public String deleteRecipe(@PathVariable("id") long id) {
         service.delete(id);
         return "redirect:/recipe/list";
+    }
+
+    @GetMapping("/search")
+    public String deleteRecipe(@RequestParam("recipeName") String recipeName, Model model) {
+        List<RecipeDTO> recipeList = service.findByName(recipeName);
+        model.addAttribute("recipeList", recipeList);
+        return "recipes/list";
     }
 }
