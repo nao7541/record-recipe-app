@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <header th:fragment="header" class="bg-white shadow-md mb-5">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="/recipe/list" class="text-xl font-bold text-gray-800">Whats will you make?</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/recipe/list" class="text-gray-600 hover:text-indigo-500">レシピ一覧</a>
+                    <a href="/recipe/registerForm" class="text-gray-600 hover:text-indigo-500">新規登録</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>

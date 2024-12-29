@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="/output.css">
     <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
 </head>
-<body>
-    <section layout:fragment="content">
-    </section>
+<body class="flex flex-col min-h-screen">
+    <div th:replace="~{fragments/header :: header}"></div>
+    <main class="flex-grow">
+        <section layout:fragment="content">
+        </section>
+    </main>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
