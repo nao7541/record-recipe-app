@@ -9,9 +9,18 @@
                 <div class="flex items-center">
                     <a href="/recipe/list" class="text-xl font-bold text-gray-800">Whats will you make?</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="/recipe/list" class="text-gray-600 hover:text-indigo-500">レシピ一覧</a>
-                    <a href="/recipe/registerForm" class="text-gray-600 hover:text-indigo-500">新規登録</a>
+                <div class="flex items-center">
+                    <div sec:authorize="isAuthenticated()" class="flex items-center space-x-4">
+                        <span class="text-gray-600" sec:authentication="name"></span>
+                        <a href="/recipe/list" class="text-gray-600 hover:text-indigo-500">Recipes</a>
+                        <a href="/recipe/registerForm" class="text-gray-600 hover:text-indigo-500">Registration</a>
+                        <form th:action="@{/logout}" method="post" class="block">
+                            <button type="submit" class="text-gray-600 hover:text-indigo-500">Logout</button>
+                        </form>
+                    </div>
+                    <a sec:authorize="isAnonymous()"
+                        href="/login"
+                        class="text-gray-600 hover:text-indigo-500">login</a>
                 </div>
             </div>
         </nav>
