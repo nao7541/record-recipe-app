@@ -12,22 +12,40 @@
             <h1 class="text-3xl font-bold underline">レシピ詳細ページです</h1>
             <p>レシピ詳細をここに表示します</p>
         </div>
-        <div th:object="${recipe}">
-            <p th:text="*{id}"></p>
-            <p th:text="*{name}"></p>
-            <p th:text="*{mainIngredient}"></p>
-            <ul>
-                <li th:each="ingredient:*{otherIngredients}" th:text="${ingredient}"></li>
-            </ul>
-            <p th:text="*{url}"></p>
-        </div>
-        <div>
-            <form
-                th:action="@{/recipe/{id}(id=*{id})}"
-                th:method="delete"
-                onclick="return confirm('レシピを削除しますか？');"
-            >
-                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Delete</button>
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-2xl mx-auto bg-white rouded-lg shadow-lg p-8" th:object="${recipe}">
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2" th:text="*{name}"></h1>
+                    <div class="border-b-2 border-gray-200"></div>
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-2">メイン材料</h2>
+                    <p class="text-gray-600" th:text="*{mainIngredient}"></p>
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-2">サブ材料</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li th:each="ingredient:*{otherIngredients}"
+                            class="text-gray-600"
+                            th:text="${ingredient}">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-2">レシピURL</h2>
+                    <a class="text-indigo-600 hover:text-indigo-800 break-all"
+                        th:href="*{url}"
+                        target="_blank"
+                        th:if="*{url}"
+                        >
+                        <span th:text="*{url}"></span>
+                    </a>
+                    <p th:unless="*{url}" class="text-gray-500">URLは設定されていません</p>
+                </div>
+            </div>
         </div>
     </section>
 </body>
