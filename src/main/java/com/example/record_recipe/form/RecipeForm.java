@@ -4,6 +4,7 @@ import com.example.record_recipe.dto.RecipeDTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import java.util.List;
 
 public record RecipeForm(
     @NotBlank
@@ -13,7 +14,7 @@ public record RecipeForm(
     @Size(max = 255, message = "255文字以内で入力してください")
     String mainIngredient,
     @Size(max = 255, message = "255文字以内で入力してください")
-    String[] otherIngredients,
+    List<String> otherIngredients,
     @NotBlank
     @Size(max = 255, message = "255文字以内で入力してください")
     String url
@@ -26,7 +27,11 @@ public record RecipeForm(
         recipeDTO.setId(null);
         recipeDTO.setName(this.name);
         recipeDTO.setMainIngredient(this.mainIngredient);
-        recipeDTO.setOtherIngredients(this.otherIngredients);
+        recipeDTO.setOtherIngredients(
+            this.otherIngredients != null
+                ? this.otherIngredients.toArray(new String[0])
+                : new String[0]
+        );
         recipeDTO.setUrl(this.url);
 
         return recipeDTO;

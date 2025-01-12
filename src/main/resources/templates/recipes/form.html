@@ -40,14 +40,50 @@
             </div>
             <div class="mb-8">
                 <label for="otherIngredients" class="block text-sm">サブ食材</label>
-                <input
-                    type="text"
-                    th:field="*{otherIngredients}"
-                    class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
-                    placeholder="玉ねぎ、にんじん、じゃがいも、カレールー(カレー粉)"
-                >
+                <div id="ingredients-container">
+                    <div class="flex gap-2 mb-2">
+                        <input
+                            type="text"
+                            name="otherIngredients"
+                            class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                            placeholder="玉ねぎ"
+                        >
+                        <button type="button" 
+                                class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                                onclick="addIngredientField()">
+                            +
+                        </button>
+                    </div>
+                </div>
                 <span th:errors="*{otherIngredients}"></span>
             </div>
+
+            <script>
+                function addIngredientField() {
+                    const container = document.getElementById('ingredients-container');
+                    const div = document.createElement('div');
+                    div.className = 'flex gap-2 mb-2';
+                    div.innerHTML = `
+                        <input
+                            type="text"
+                            name="otherIngredients"
+                            class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                            placeholder="サブ食材"
+                        >
+                        <button type="button" 
+                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                onclick="removeIngredientField(this)">
+                            -
+                        </button>
+                    `;
+                    container.appendChild(div);
+                }
+                
+                function removeIngredientField(button) {
+                    button.parentElement.remove();
+                }
+            </script>
+
             <div class="mb-8">
                 <label for="url" class="block text-sm">レシピURL</label>
                 <input
